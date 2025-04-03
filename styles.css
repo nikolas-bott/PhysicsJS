@@ -4,6 +4,7 @@
 }
 
 .container {
+  overflow-y: hidden;
   background-color: #141314;
   display: flex;
   height: 100vh;
@@ -19,12 +20,18 @@
   display: flex;
   justify-content: space-around;
 }
-p {
+p,
+h2 {
   color: #e6e1e3;
   font-size: 20px;
   font-weight: 700;
   padding: 0px 20px;
   font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+  font-size: 60px;
+  padding: 30px;
 }
 #settings {
   gap: 10px;
@@ -46,11 +53,14 @@ p {
   border-radius: 20px;
   display: flex;
   justify-content: center;
-  background-color: #ffb421;
+  background-color: #ffb521d3;
   height: 50vh;
   width: 75vh;
+  transition: all 0.5s ease-in-out;
 }
-
+#sub-container:hover {
+  background-color: #ffb521;
+}
 #ball {
   border-radius: 20px;
   position: absolute;

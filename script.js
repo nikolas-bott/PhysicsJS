@@ -77,7 +77,12 @@ function getFallenDistanceInMeters(oneHundrethOfSecond) {
 }
 
 function startBounce() {
-  if (velocityAfterBounce < 1) {
+  if (velocityAfterBounce < 0.4) {
+    velocity = 0;
+
+    speedometer.innerText = "Velocity [m/s]: " + Math.floor(velocity);
+    distanceTracker.innerText = "Distance →  floor [m]: " + Math.floor(0);
+
     console.log("Velocity to small!");
     return;
   }
