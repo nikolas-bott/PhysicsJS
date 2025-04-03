@@ -31,7 +31,6 @@ starBtn.addEventListener("click", () => {
   let oneHundrethOfSecond = 0;
 
   startInteval = setInterval(() => {
-    console.log("Start interval...");
     oneHundrethOfSecond++;
 
     ball.style.top =
@@ -50,7 +49,6 @@ starBtn.addEventListener("click", () => {
 
 ratioSlider.oninput = function () {
   pixelToMetersFactor = this.value;
-  pixelToMetersFactor = pixelToMetersFactor.toFixed(2);
 
   pixelToMetersText.innerText = "1m = " + pixelToMetersFactor + "px";
 };
