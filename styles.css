@@ -27,6 +27,13 @@ p {
   font-family: "Open Sans", sans-serif;
 }
 #settings {
+  gap: 10px;
+
+  display: flex;
+  flex-direction: row;
+}
+#settings div {
+  text-align: center;
   background-color: #1c1b1d;
   margin: 5px;
   padding: 10px;
@@ -39,7 +46,6 @@ p {
   border-radius: 20px;
   display: flex;
   justify-content: center;
-  /* border: 5px solid #3700b3; */
   background-color: #ffb421;
   height: 50vh;
   width: 75vh;
@@ -51,10 +57,6 @@ p {
   height: 20px;
   width: 20px;
   background-color: #c75df7;
-}
-md-elevated-button {
-  margin: 15px;
-  padding: 10px 15px;
 }
 
 button {
@@ -87,7 +89,7 @@ button:active {
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
-  width: 100%;
+  width: 200px;
   height: 10px;
   cursor: pointer;
 }

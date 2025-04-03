@@ -3,8 +3,10 @@ const subContainer = document.getElementById("sub-container");
 const ball = document.getElementById("ball");
 const speedometer = document.getElementById("speedometer");
 const distanceTracker = document.getElementById("distance-tracker");
-const slider = document.getElementById("pixel-meter-ratio");
+const ratioSlider = document.getElementById("pixel-meter-ratio");
 const pixelToMetersText = document.getElementById("pixel-to-meter");
+const bounceFactorSlider = document.getElementById("bounce-factor");
+const bounceFactorText = document.getElementById("bFactor");
 
 let startInteval;
 let bounceInterval;
@@ -18,7 +20,7 @@ let velocityAfterBounce;
 let fallingHeight = subContainer.getBoundingClientRect().top;
 
 let pixelToMetersFactor = 15;
-const bounceFactor = 0.75;
+let bounceFactor = 0.75;
 
 starBtn.addEventListener("click", () => {
   if (startInteval) clearInterval(startInteval);
@@ -46,9 +48,18 @@ starBtn.addEventListener("click", () => {
   }, 10);
 });
 
-slider.oninput = function () {
+ratioSlider.oninput = function () {
   pixelToMetersFactor = this.value;
+  pixelToMetersFactor = pixelToMetersFactor.toFixed(2);
+
   pixelToMetersText.innerText = "1m = " + pixelToMetersFactor + "px";
+};
+
+bounceFactorSlider.oninput = function () {
+  bounceFactor = this.value / 100;
+  bounceFactor = bounceFactor.toFixed(2);
+
+  bounceFactorText.innerText = "Bounce Factor: " + bounceFactor + "x";
 };
 
 //! Velocity Calculation for free fall over time is like this: 1/2 * 9.8 [m/s²] * seconds = velocity [m/s]
