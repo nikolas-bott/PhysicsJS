@@ -14,10 +14,13 @@ let velocity;
 let velocityAfterBounce;
 
 let fallingHeight = subContainer.getBoundingClientRect().top;
+
+const pixelToMetersFactor = 15;
 const bounceFactor = 0.75;
 
 starBtn.addEventListener("click", () => {
   if (startInteval) clearInterval(startInteval);
+  if (bounceInterval) clearInterval(bounceInterval);
 
   starBtn.innerText = "Restart";
   ballHeight = subContainer.getBoundingClientRect().top;
@@ -45,19 +48,20 @@ starBtn.addEventListener("click", () => {
 
 function getFallenDistanceInMeters(oneHundrethOfSecond) {
   velocity = 9.81 * (oneHundrethOfSecond / 100);
-  speedometer.innerText = "Speed in m/s: " + Math.floor(velocity);
+  speedometer.innerText = "Velocity [m/s]: " + Math.floor(velocity);
 
-  metersTravelled = (1 / 2) * velocity * (oneHundrethOfSecond / 100);
+  metersTravelled =
+    (1 / 2) * velocity * (oneHundrethOfSecond / 100) * pixelToMetersFactor;
   //console.log("Meters travelled " + metersTravelled + " [m]");
 
   distanceTracker.innerText =
-    "Distance Travelled in m: " + Math.floor(metersTravelled);
+    "Distance → ceiling [m]: " + Math.floor(metersTravelled);
 
   return metersTravelled;
 }
 
 function startBounce() {
-  if (velocityAfterBounce < 2) {
+  if (velocityAfterBounce < 1) {
     console.log("Velocity to small!");
     return;
   }
@@ -78,13 +82,13 @@ function getMeters(oneHundrethOfSecond) {
   const seconds = oneHundrethOfSecond / 100;
   velocity = velocityAfterBounce - 9.81 * seconds;
 
-  speedometer.innerText = "Speed in m/s: " + Math.floor(velocity);
+  speedometer.innerText = "Velocity [m/s]: " + Math.floor(velocity);
 
   const meters =
-    -9.81 * (1 / 2) * seconds * seconds + velocityAfterBounce * seconds;
+    (-9.81 * (1 / 2) * seconds * seconds + velocityAfterBounce * seconds) *
+    pixelToMetersFactor;
 
-  distanceTracker.innerText =
-    "Distance in m (since last bounce): " + Math.floor(meters);
+  distanceTracker.innerText = "Distance →  floor [m]: " + Math.floor(meters);
 
   if (meters <= 0) {
     console.log(velocityAfterBounce);
