@@ -3,6 +3,8 @@ const subContainer = document.getElementById("sub-container");
 const ball = document.getElementById("ball");
 const speedometer = document.getElementById("speedometer");
 const distanceTracker = document.getElementById("distance-tracker");
+const slider = document.getElementById("pixel-meter-ratio");
+const pixelToMetersText = document.getElementById("pixel-to-meter");
 
 let startInteval;
 let bounceInterval;
@@ -15,7 +17,7 @@ let velocityAfterBounce;
 
 let fallingHeight = subContainer.getBoundingClientRect().top;
 
-const pixelToMetersFactor = 15;
+let pixelToMetersFactor = 15;
 const bounceFactor = 0.75;
 
 starBtn.addEventListener("click", () => {
@@ -43,6 +45,11 @@ starBtn.addEventListener("click", () => {
     }
   }, 10);
 });
+
+slider.oninput = function () {
+  pixelToMetersFactor = this.value;
+  pixelToMetersText.innerText = "1m = " + pixelToMetersFactor + "px";
+};
 
 //! Velocity Calculation for free fall over time is like this: 1/2 * 9.8 [m/s²] * seconds = velocity [m/s]
 

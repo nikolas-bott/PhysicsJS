@@ -14,6 +14,17 @@
   </head>
   <body>
     <div class="container">
+      <div id="settings">
+        <p id="pixel-to-meter">1m = 10px</p>
+        <input
+          type="range"
+          min="1"
+          max="50"
+          value="15"
+          id="pixel-meter-ratio"
+          class="slider"
+        />
+      </div>
       <div id="upper-container">
         <p id="speedometer">Velocity [m/s]:</p>
         <p id="distance-tracker">Distance → ceiling [m]:</p>
