@@ -17,12 +17,12 @@
       <h2>Gravity Simulator</h2>
       <div id="settings">
         <div>
-          <p id="pixel-to-meter">1m = 10px</p>
+          <p id="pixel-to-meter">1m = 0.35px</p>
           <input
             type="range"
             min="1"
             max="50"
-            value="15"
+            value="35"
             id="pixel-meter-ratio"
             class="slider"
           />
@@ -35,6 +35,17 @@
             max="90"
             value="75"
             id="bounce-factor"
+            class="slider"
+          />
+        </div>
+        <div>
+          <p id="stormFactor">Storm speed: 0 [m/s]</p>
+          <input
+            type="range"
+            min="-30"
+            max="30"
+            value="0"
+            id="storm-factor"
             class="slider"
           />
         </div>
